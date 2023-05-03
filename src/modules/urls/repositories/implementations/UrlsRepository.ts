@@ -12,7 +12,18 @@ export class UrlsRepository implements IUrlsRepository {
       },
     });
   }
-  async findUrl(newUrl: string): Promise<Urls | null> {
+
+  async findUrl(url: string): Promise<Urls | null> {
+    const urlAlreadyExists = await prisma.urls.findFirst({
+      where: {
+        url,
+      },
+    });
+
+    return urlAlreadyExists;
+  }
+
+  async findNewUrl(newUrl: string): Promise<Urls | null> {
     const url = await prisma.urls.findUnique({
       where: {
         new_url: newUrl,
