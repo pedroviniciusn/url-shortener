@@ -1,7 +1,7 @@
 import { Urls } from "@prisma/client";
 import { ICreateNewUrlDTO } from "../../dtos/ICreateNewUrl";
 import { IUrlsRepository } from "../IUrlsRepository";
-import { prisma } from "../../../../database";
+import { prisma } from "../../../../prisma";
 
 export class UrlsRepository implements IUrlsRepository {
   async create({ url, newUrl }: ICreateNewUrlDTO): Promise<void> {
