@@ -11,7 +11,7 @@ export class CreateNewUrlUseCase {
     private urlsRepository: IUrlsRepository
   ) {}
 
-  async execute({ url }: ICreateNewUrlDTO): Promise<void> {
+  async execute(url: string): Promise<void> {
     const urlAlreadyExists = await this.urlsRepository.findUrl(url);
 
     if (urlAlreadyExists) {

@@ -7,7 +7,7 @@ export class UrlsRepository implements IUrlsRepository {
   async create({ url, newUrl }: ICreateNewUrlDTO): Promise<void> {
     await prisma.urls.create({
       data: {
-        url: url,
+        url,
         new_url: newUrl,
       },
     });
