@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { nanoid } from "nanoid";
 import { AppError } from "../../../../errors/AppError";
-import { ICreateNewUrlDTO } from "../../dtos/ICreateNewUrl";
 import { IUrlsRepository } from "../../repositories/IUrlsRepository";
 
 @injectable()

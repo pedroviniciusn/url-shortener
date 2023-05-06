@@ -1,4 +1,8 @@
 {
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "compilerOptions": {
     "outDir": "./build",
     "emitDecoratorMetadata": true,
@@ -18,5 +22,6 @@
       "@routes/*": ["routes/*"],
       "@middlewares/*": ["middlewares/*"]
     }
-  }
+  },
+  "include": ["/**/*.ts"]
 }
