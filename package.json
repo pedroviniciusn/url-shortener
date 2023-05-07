@@ -5,7 +5,7 @@
   "main": "src/app.ts",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch src --exec node --loader ts-node/esm src/app.ts",
+    "dev": "nodemon --watch src --exec node --loader ts-node/esm src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

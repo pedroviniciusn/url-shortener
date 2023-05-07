@@ -1,5 +1,15 @@
-import { app } from "./server";
+import "reflect-metadata";
+import express from "express";
+import "express-async-errors";
+import "./shared/container";
+import { router } from "./routes";
+import errorHandler from "./middlewares/errorHandler";
 
-const port = 3333;
+const app = express();
 
-app.listen(port, () => console.log(`Server is runing in port ${port}`));
+app.use(express.json());
+app.use(router);
+
+app.use(errorHandler);
+
+export { app };
