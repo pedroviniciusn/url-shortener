@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { CreateNewUrlUseCase } from "../createNewUrl/CreateNewUrlUseCase";
+import { DeleteNewUrlUseCase } from "./DeleteNewUrlUseCase";
 
 export class DeleteNewUrlController {
-  async handle(req: Request, res: Response) {
+  async handler(req: Request, res: Response) {
     const { newUrl } = req.params;
 
-    const deleteNewUrlUseCase = container.resolve(CreateNewUrlUseCase);
+    const deleteNewUrlUseCase = container.resolve(DeleteNewUrlUseCase);
 
     await deleteNewUrlUseCase.execute(newUrl);
 
