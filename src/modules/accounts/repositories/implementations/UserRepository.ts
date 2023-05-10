@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { prisma } from "@prsima/index";
+import { prisma } from "../../../../prisma/index";
 import { ICreateUser } from "modules/accounts/dtos/ICreateUser";
 import { IUserReposiroty } from "../IUserRepository";
 
