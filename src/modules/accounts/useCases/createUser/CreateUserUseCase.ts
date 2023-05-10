@@ -1,6 +1,6 @@
 import { AppError } from "../../../../errors/AppError";
-import { ICreateUser } from "modules/accounts/dtos/ICreateUser";
-import { UserRepository } from "modules/accounts/repositories/implementations/UserRepository";
+import { ICreateUser } from "../../dtos/ICreateUser";
+import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
