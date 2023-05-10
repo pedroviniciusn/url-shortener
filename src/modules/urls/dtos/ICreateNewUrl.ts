@@ -1,4 +1,4 @@
-export interface ICreateNewUrlDTO {
+export interface ICreateNewUrl {
   url: string;
   newUrl: string;
 }
