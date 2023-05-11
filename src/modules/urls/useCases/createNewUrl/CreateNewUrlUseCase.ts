@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { nanoid } from "nanoid";
 import { AppError } from "../../../../errors/AppError";
 import { IUrlsRepository } from "../../repositories/IUrlsRepository";
+import { ICreateNewUrl } from "../../dtos/ICreateNewUrl";
 
 @injectable()
 export class CreateNewUrlUseCase {
@@ -10,15 +11,25 @@ export class CreateNewUrlUseCase {
     private urlsRepository: IUrlsRepository
   ) {}
 
-  async execute(url: string): Promise<void> {
+  async execute({ url, userId }: ICreateNewUrl): Promise<void> {
     const urlAlreadyExists = await this.urlsRepository.findUrl(url);
 
     if (urlAlreadyExists) {
-      throw new AppError("Url has already been formatted", 422);
+      urlAlreadyExists.map((item) => {
+        if (item.userId == userId) {
+          throw new AppError("URL has already been formatted", 422);
+        }
+      });
     }
 
     const newUrl = nanoid(5);
 
-    await this.urlsRepository.create({ url, newUrl });
+    const newUrlAlreadyExists = await this.urlsRepository.findNewUrl(newUrl);
+
+    if (newUrlAlreadyExists) {
+      throw new AppError("Please, try again");
+    }
+
+    await this.urlsRepository.create({ url, newUrl, userId });
   }
 }

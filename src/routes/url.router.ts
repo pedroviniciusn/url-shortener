@@ -7,8 +7,8 @@ const urlRoutes = Router();
 const createNewUrlController = new CreateNewUrlController();
 const deleteNewUrlController = new DeleteNewUrlController();
 
-urlRoutes.post("/newurl", createNewUrlController.handler);
+urlRoutes.post("/:id/newurl", createNewUrlController.handler);
 
-urlRoutes.delete("/:newurl", deleteNewUrlController.handler);
+urlRoutes.delete("/:id/:newurl", deleteNewUrlController.handler);
 
 export { urlRoutes };

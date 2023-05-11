@@ -4,17 +4,18 @@ import { IUrlsRepository } from "../IUrlsRepository";
 import { prisma } from "../../../../prisma";
 
 export class UrlsRepository implements IUrlsRepository {
-  async create({ url, newUrl }: ICreateNewUrl): Promise<void> {
+  async create({ url, newUrl, userId }: ICreateNewUrl): Promise<void> {
     await prisma.urls.create({
       data: {
         url,
         new_url: newUrl,
+        userId,
       },
     });
   }
 
-  async findUrl(url: string): Promise<Urls | null> {
-    const urlAlreadyExists = await prisma.urls.findFirst({
+  async findUrl(url: string): Promise<Urls[] | null> {
+    const urlAlreadyExists = await prisma.urls.findMany({
       where: {
         url,
       },
