@@ -9,10 +9,10 @@ export class DeleteNewUrlUseCase {
     private urlsRepository: IUrlsRepository
   ) {}
 
-  async execute(newUrl: string) {
+  async execute(newUrl: string, userId: string) {
     const urlAlreadyExists = await this.urlsRepository.findNewUrl(newUrl);
 
-    if (!urlAlreadyExists) {
+    if (!urlAlreadyExists || urlAlreadyExists.userId != userId) {
       throw new AppError("URL not found");
     }
 
