@@ -14,10 +14,10 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^18.16.3",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^4.7.2"
   },
@@ -27,8 +27,8 @@
     "esm": "^3.2.25",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.0",
     "nanoid": "^4.0.2",
-    "node-fetch": "^2.6.9",
     "prisma": "^4.13.0",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0"

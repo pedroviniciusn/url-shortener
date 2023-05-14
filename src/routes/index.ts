@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { authenticateRoutes } from "./authenticate.router";
 import { urlRoutes } from "./url.router";
 import { userRoutes } from "./user.router";
 
@@ -6,5 +7,6 @@ const router = Router();
 
 router.use("/api", urlRoutes);
 router.use("/api", userRoutes);
+router.use(authenticateRoutes);
 
 export { router };
