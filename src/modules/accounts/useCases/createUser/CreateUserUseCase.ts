@@ -1,7 +1,7 @@
-import bcrypt from "bcryptjs";
-import { AppError } from "../../../../errors/AppError";
 import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { AppError } from "../../../../errors/AppError";
 import { inject, injectable } from "tsyringe";
+import bcrypt from "bcryptjs";
 
 interface IRequest {
   name: string;

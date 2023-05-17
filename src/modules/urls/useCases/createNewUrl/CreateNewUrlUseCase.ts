@@ -2,7 +2,11 @@ import { inject, injectable } from "tsyringe";
 import { nanoid } from "nanoid";
 import { AppError } from "../../../../errors/AppError";
 import { IUrlsRepository } from "../../repositories/IUrlsRepository";
-import { ICreateNewUrl } from "../../dtos/ICreateNewUrl";
+
+interface IRequest {
+  url: string;
+  userId: string;
+}
 
 @injectable()
 export class CreateNewUrlUseCase {
@@ -11,7 +15,7 @@ export class CreateNewUrlUseCase {
     private urlsRepository: IUrlsRepository
   ) {}
 
-  async execute({ url, userId }: ICreateNewUrl): Promise<void> {
+  async execute({ url, userId }: IRequest): Promise<void> {
     const urlAlreadyExists = await this.urlsRepository.findUrl(url);
 
     if (urlAlreadyExists) {

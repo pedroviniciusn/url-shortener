@@ -1,6 +1,11 @@
 import { AppError } from "../../../../errors/AppError";
-import { IUrlsRepository } from "@modules/urls/repositories/IUrlsRepository";
+import { IUrlsRepository } from "../../repositories/IUrlsRepository";
 import { injectable, inject } from "tsyringe";
+
+interface IRequest {
+  newUrl: string;
+  userId: string;
+}
 
 @injectable()
 export class DeleteNewUrlUseCase {
@@ -9,7 +14,7 @@ export class DeleteNewUrlUseCase {
     private urlsRepository: IUrlsRepository
   ) {}
 
-  async execute(newUrl: string, userId: string) {
+  async execute({ newUrl, userId }: IRequest) {
     const urlAlreadyExists = await this.urlsRepository.findNewUrl(newUrl);
 
     if (!urlAlreadyExists || urlAlreadyExists.userId != userId) {

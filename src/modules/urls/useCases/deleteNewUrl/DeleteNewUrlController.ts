@@ -8,7 +8,7 @@ export class DeleteNewUrlController {
 
     const deleteNewUrlUseCase = container.resolve(DeleteNewUrlUseCase);
 
-    await deleteNewUrlUseCase.execute(newUrl, userId);
+    await deleteNewUrlUseCase.execute({ newUrl, userId });
 
     return res.status(200).json({
       message: "URL deleted!",

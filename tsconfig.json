@@ -13,15 +13,16 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "target": "ESNext",
-    "baseUrl": "./src",
-    "paths": {
-      "@modules/*": ["modules/*"],
-      "@prsima/*": ["prisma/*"],
-      "@shared/*": ["shared/*"],
-      "@errors/*": ["errors/*"],
-      "@routes/*": ["routes/*"],
-      "@middlewares/*": ["middlewares/*"]
-    }
+    "typeRoots": ["./src/@types"]
+    // "baseUrl": "./src"
+    // "paths": {
+    //   "@modules/*": ["modules/*"],
+    //   "@prsima/*": ["prisma/*"],
+    //   "@shared/*": ["shared/*"],
+    //   "@errors/*": ["errors/*"],
+    //   "@routes/*": ["routes/*"],
+    //   "@middlewares/*": ["middlewares/*"]
+    // }
   },
   "include": ["/**/*.ts"]
 }

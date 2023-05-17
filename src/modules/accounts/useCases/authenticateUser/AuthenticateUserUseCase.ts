@@ -1,9 +1,9 @@
 import { IUserReposiroty } from "../../repositories/IUserRepository";
-import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../errors/AppError";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { auth } from "../../../../config/auth";
+import { inject, injectable } from "tsyringe";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 interface IRequest {
   email: string;

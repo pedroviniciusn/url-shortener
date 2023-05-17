@@ -1,6 +1,6 @@
 import { User, Urls } from "@prisma/client";
 import { prisma } from "../../../../prisma/index";
-import { ICreateUser } from "modules/accounts/dtos/ICreateUser";
+import { ICreateUser } from "../../dtos/ICreateUser";
 import { IUserReposiroty } from "../IUserRepository";
 
 export class UserRepository implements IUserReposiroty {
