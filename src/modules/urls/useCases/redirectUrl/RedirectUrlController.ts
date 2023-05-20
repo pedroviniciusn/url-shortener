@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { RedirectUrlUseCase } from "./RedirectUrlUseCase";
 
 export class RedirectUrlController {
-  async handler(req: Request, res: Response) {
+  async handler(req: Request, res: Response): Promise<void> {
     const { newUrl } = req.params;
 
     const redirectUrlUseCase = container.resolve(RedirectUrlUseCase);

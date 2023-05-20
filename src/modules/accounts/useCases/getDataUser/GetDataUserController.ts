@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { GetDataUserUseCase } from "./GetDataUserUseCase";
 
 export class GetDataUserController {
-  async handler(req: Request, res: Response) {
+  async handler(req: Request, res: Response): Promise<Response> {
     const { id: userId } = req.user;
 
     const getDataUserUseCase = container.resolve(GetDataUserUseCase);
