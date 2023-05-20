@@ -8,14 +8,10 @@ const urlRoutes = Router();
 const createNewUrlController = new CreateNewUrlController();
 const deleteNewUrlController = new DeleteNewUrlController();
 
-urlRoutes.post(
-  "/:id/newurl",
-  ensureAuthenticated,
-  createNewUrlController.handler
-);
+urlRoutes.post("/newurl", ensureAuthenticated, createNewUrlController.handler);
 
 urlRoutes.delete(
-  "/:id/:newurl",
+  "/:newurl",
   ensureAuthenticated,
   deleteNewUrlController.handler
 );

@@ -4,7 +4,7 @@ import { CreateNewUrlUseCase } from "./CreateNewUrlUseCase";
 
 export class CreateNewUrlController {
   async handler(req: Request, res: Response): Promise<Response> {
-    const { id: userId } = req.params;
+    const { id: userId } = req.user;
     const { url } = req.body;
 
     const createNewUrlUseCase = container.resolve(CreateNewUrlUseCase);

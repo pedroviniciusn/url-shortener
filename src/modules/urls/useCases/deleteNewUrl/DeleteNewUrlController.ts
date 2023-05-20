@@ -4,7 +4,8 @@ import { DeleteNewUrlUseCase } from "./DeleteNewUrlUseCase";
 
 export class DeleteNewUrlController {
   async handler(req: Request, res: Response) {
-    const { id: userId, newurl: newUrl } = req.params;
+    const { newurl: newUrl } = req.params;
+    const { id: userId } = req.user;
 
     const deleteNewUrlUseCase = container.resolve(DeleteNewUrlUseCase);
 
