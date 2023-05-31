@@ -17,7 +17,7 @@ export class DeleteNewUrlUseCase {
   async execute({ newUrl, userId }: IRequest) {
     const urlAlreadyExists = await this.urlsRepository.findNewUrl(newUrl);
 
-    if (!urlAlreadyExists || urlAlreadyExists.userId != userId) {
+    if (!urlAlreadyExists || urlAlreadyExists.user_id != userId) {
       throw new AppError("URL not found");
     }
 

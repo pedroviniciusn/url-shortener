@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import { prisma } from "../../../../prisma/index";
 import { ICreateUser } from "../../dtos/ICreateUser";
+import { IUpdateUser } from "../../dtos/IUpdateUser";
 import { IUserReposiroty } from "../IUserRepository";
 
 export class UserRepository implements IUserReposiroty {
@@ -12,6 +13,21 @@ export class UserRepository implements IUserReposiroty {
         password,
       },
     });
+  }
+
+  async update({ id, email, name, password }: IUpdateUser): Promise<User> {
+    const user = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+        email,
+        password,
+      },
+    });
+
+    return user;
   }
 
   async delete(userId: string): Promise<void> {

@@ -20,7 +20,7 @@ export class CreateNewUrlUseCase {
 
     if (urlAlreadyExists) {
       urlAlreadyExists.map((item) => {
-        if (item.userId == userId) {
+        if (item.user_id == userId) {
           throw new AppError("URL has already been formatted", 422);
         }
       });

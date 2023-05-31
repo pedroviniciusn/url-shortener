@@ -9,7 +9,7 @@ export class UrlsRepository implements IUrlsRepository {
       data: {
         url,
         new_url: newUrl,
-        userId,
+        user_id: userId,
       },
     });
   }
