@@ -4,6 +4,16 @@
     "experimentalSpecifierResolution": "node"
   },
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@prisma/*": ["prisma/*"],
+      "@shared/*": ["shared/*"],
+      "@errors/*": ["errors/*"],
+      "@routes/*": ["routes/*"],
+      "@middlewares/*": ["middlewares/*"]
+    },
+    "typeRoots": ["./src/@types", "./@types", "./node_modules/@types"],
     "outDir": "./build",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -12,17 +22,7 @@
     "esModuleInterop": true,
     "module": "ESNext",
     "moduleResolution": "node",
-    "target": "ESNext",
-    "typeRoots": ["./src/@types"]
-    // "baseUrl": "./src"
-    // "paths": {
-    //   "@modules/*": ["modules/*"],
-    //   "@prsima/*": ["prisma/*"],
-    //   "@shared/*": ["shared/*"],
-    //   "@errors/*": ["errors/*"],
-    //   "@routes/*": ["routes/*"],
-    //   "@middlewares/*": ["middlewares/*"]
-    // }
+    "target": "ESNext"
   },
   "include": ["/**/*.ts"]
 }
