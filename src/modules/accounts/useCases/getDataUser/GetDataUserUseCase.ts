@@ -1,7 +1,8 @@
-import { User } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../errors/AppError";
 import { IUserReposiroty } from "../../repositories/IUserRepository";
+import { UserMap } from "../../mapper/UserMap";
+import { IUserResponse } from "../../dtos/IUserResponse";
 
 interface IRequest {
   userId: string;
@@ -14,13 +15,13 @@ export class GetDataUserUseCase {
     private userRepository: IUserReposiroty
   ) {}
 
-  async execute({ userId }: IRequest): Promise<User> {
+  async execute({ userId }: IRequest): Promise<IUserResponse> {
     const user = await this.userRepository.findById(userId);
 
     if (!user) {
       throw new AppError("User not found");
     }
 
-    return user;
+    return UserMap.toMap(user);
   }
 }
