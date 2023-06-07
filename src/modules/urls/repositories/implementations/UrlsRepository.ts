@@ -25,7 +25,7 @@ export class UrlsRepository implements IUrlsRepository {
   }
 
   async findNewUrl(newUrl: string): Promise<Urls | null> {
-    const url = await prisma.urls.findFirst({
+    const url = await prisma.urls.findUnique({
       where: {
         new_url: newUrl,
       },
