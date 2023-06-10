@@ -2,6 +2,7 @@ import { InMemoryUserRepository } from "../../repositories/implementations/in-me
 import { CreateUserUseCase } from "./CreateUserUseCase";
 import { AppError } from "../../../../errors/AppError";
 import { ICreateUser } from "../../dtos/ICreateUser";
+import { jest } from "@jest/globals";
 
 let inMemoryUserRepository: InMemoryUserRepository;
 let createUserUseCase: CreateUserUseCase;

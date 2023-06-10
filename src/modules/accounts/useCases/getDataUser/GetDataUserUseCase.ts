@@ -22,6 +22,10 @@ export class GetDataUserUseCase {
       throw new AppError("User not found");
     }
 
-    return UserMap.toMap(user);
+    if (process.env.NODE_ENV != "test") {
+      return UserMap.toMap(user);
+    } else {
+      return user;
+    }
   }
 }

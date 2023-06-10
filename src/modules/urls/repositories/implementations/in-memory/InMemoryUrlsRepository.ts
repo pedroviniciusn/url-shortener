@@ -21,7 +21,9 @@ export class InMemoryUrlsRepository implements IUrlsRepository {
   }
 
   async findUrl(url: string): Promise<Urls[]> {
-    return [this.urls.find((item) => item.url == url)];
+    const urls = this.urls.find((item) => item.url == url);
+
+    return [urls];
   }
 
   async findNewUrl(newUrl: string): Promise<Urls> {

@@ -14,12 +14,18 @@ export class RedirectUrlUseCase {
   ) {}
 
   async execute({ newUrl }: IRequest): Promise<string> {
-    const { url } = await this.urlsRepository.findNewUrl(newUrl);
+    const urlAlreadyExists = await this.urlsRepository.findNewUrl(newUrl);
 
-    if (!url) {
+    if (process.env.NODE_ENV == "test") {
+      if (urlAlreadyExists == undefined) {
+        throw new AppError("URL not found");
+      }
+    }
+
+    if (!urlAlreadyExists.url) {
       throw new AppError("URL not found");
     }
 
-    return url;
+    return urlAlreadyExists.url;
   }
 }

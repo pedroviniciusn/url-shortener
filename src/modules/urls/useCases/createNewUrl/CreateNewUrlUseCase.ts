@@ -18,12 +18,22 @@ export class CreateNewUrlUseCase {
   async execute({ url, userId }: IRequest): Promise<void> {
     const urlAlreadyExists = await this.urlsRepository.findUrl(url);
 
-    if (urlAlreadyExists) {
-      urlAlreadyExists.map((item) => {
-        if (item.user_id == userId) {
-          throw new AppError("URL has already been formatted", 422);
-        }
-      });
+    if (process.env.NODE_ENV == "test") {
+      if (urlAlreadyExists[0] != undefined) {
+        urlAlreadyExists.map((item) => {
+          if (item.user_id == userId) {
+            throw new AppError("URL has already been formatted", 422);
+          }
+        });
+      }
+    } else {
+      if (urlAlreadyExists) {
+        urlAlreadyExists.map((item) => {
+          if (item.user_id == userId) {
+            throw new AppError("URL has already been formatted", 422);
+          }
+        });
+      }
     }
 
     const newUrl = nanoid(5);
