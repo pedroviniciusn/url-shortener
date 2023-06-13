@@ -7,7 +7,6 @@ import dotenv from "dotenv";
 import { TestEnvironment } from "jest-environment-node";
 import { Client } from "pg";
 import util from "node:util";
-import crypto from "node:crypto";
 
 dotenv.config({ path: ".env.testing" });
 
@@ -27,8 +26,9 @@ export default class PrismaTestEnvironment extends TestEnvironment {
     const dbHost = process.env.DATABASE_HOST;
     const dbPort = process.env.DATABASE_PORT;
     const dbName = process.env.DATABASE_NAME;
+    const schema = process.env.DATABASE_SCHEMA;
 
-    this.schema = `test_${crypto.randomUUID()}`;
+    this.schema = `test_${schema}`;
     this.connectionString = `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?schema=${this.schema}`;
   }
 
