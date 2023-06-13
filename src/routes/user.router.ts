@@ -10,10 +10,10 @@ const createUserController = new CreateUserController();
 const getDataUserController = new GetDataUserController();
 const deleteUserController = new DeleteUserController();
 
-userRoutes.get("/me", ensureAuthenticated, getDataUserController.handler);
+userRoutes.get("/user", ensureAuthenticated, getDataUserController.handler);
 
-userRoutes.post("/users", createUserController.handler);
+userRoutes.post("/user", createUserController.handler);
 
-userRoutes.delete("/me", ensureAuthenticated, deleteUserController.handler);
+userRoutes.delete("/user", ensureAuthenticated, deleteUserController.handler);
 
 export { userRoutes };
