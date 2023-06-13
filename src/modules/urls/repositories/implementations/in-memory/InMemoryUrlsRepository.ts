@@ -1,5 +1,5 @@
 import { Urls } from "@prisma/client";
-import { ICreateNewUrl } from "src/modules/urls/dtos/ICreateNewUrl";
+import { ICreateNewUrl } from "../../../dtos/ICreateNewUrl";
 import { IUrlsRepository } from "../../IUrlsRepository";
 import { nanoid } from "nanoid";
 

@@ -1,5 +1,5 @@
 import { Tokens } from "@prisma/client";
-import { ICreateUserToken } from "src/modules/accounts/dtos/ICreateUserToken";
+import { ICreateUserToken } from "../../../dtos/ICreateUserToken";
 import { IUserTokenRepository } from "../../IUserTokenRepository";
 import { nanoid } from "nanoid";
 
