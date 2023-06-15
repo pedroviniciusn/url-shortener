@@ -3,15 +3,15 @@ import { container } from "tsyringe";
 import { SendForgotPasswordMailUseCase } from "./SendForgotPasswordMailUseCase";
 
 export class SendForgotPasswordMailController {
-  async handler(req: Request, res: Response): Promise<Response> {
+  async handler(req: Request, res: Response): Promise<Response | void> {
     const { email } = req.body;
 
     const sendForgotPasswordMailUseCase = container.resolve(
       SendForgotPasswordMailUseCase
     );
 
-    await sendForgotPasswordMailUseCase.execute(email);
+    const url = await sendForgotPasswordMailUseCase.execute(email);
 
-    return res.send();
+    return process.env.NODE_ENV == "test" ? res.json(url) : res.redirect(url);
   }
 }

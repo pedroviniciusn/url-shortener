@@ -27,7 +27,7 @@ export class SendForgotPasswordMailUseCase {
     private mailProvider: IMailProvider
   ) {}
 
-  async execute(email: string): Promise<void> {
+  async execute(email: string): Promise<string> {
     const __dirname = path.resolve(
       path.dirname(decodeURI(new URL(import.meta.url).pathname))
     );
@@ -62,11 +62,15 @@ export class SendForgotPasswordMailUseCase {
       link: `${process.env.FORGOT_MAIL_URL}${token}`,
     };
 
-    await this.mailProvider.sendMail(
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const url = await this.mailProvider.sendMail(
       email,
       "Recuperação de senha",
       variables,
       templatePath
     );
+
+    return process.env.NODE_ENV == "test" ? token : url;
   }
 }

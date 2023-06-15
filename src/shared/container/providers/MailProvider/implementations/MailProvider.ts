@@ -34,7 +34,7 @@ export class MailProvider implements IMailProvider {
     subject: string,
     variables: any,
     path: string
-  ): Promise<void> {
+  ): Promise<string> {
     const templateFileContent = readFileSync(path).toString("utf-8");
 
     const templateParse = Handlebars.compile(templateFileContent);
@@ -50,5 +50,7 @@ export class MailProvider implements IMailProvider {
 
     console.log("Message sent: %s", message.messageId);
     console.log("Preview URL: %s", getTestMessageUrl(message));
+
+    return getTestMessageUrl(message) as string;
   }
 }
