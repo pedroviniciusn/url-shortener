@@ -10,7 +10,7 @@ export class SendForgotPasswordMailController {
       SendForgotPasswordMailUseCase
     );
 
-    const url = await sendForgotPasswordMailUseCase.execute(email);
+    const url = (await sendForgotPasswordMailUseCase.execute(email)) as string;
 
     return process.env.NODE_ENV == "test" ? res.json(url) : res.redirect(url);
   }

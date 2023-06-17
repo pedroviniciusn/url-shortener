@@ -7,10 +7,6 @@ import { IMailProvider } from "../../../../shared/container/providers/MailProvid
 import { IUserReposiroty } from "../../repositories/IUserRepository";
 import { IUserTokenRepository } from "../../repositories/IUserTokenRepository";
 
-interface IRequest {
-  email: string;
-}
-
 @injectable()
 export class SendForgotPasswordMailUseCase {
   constructor(
@@ -27,7 +23,7 @@ export class SendForgotPasswordMailUseCase {
     private mailProvider: IMailProvider
   ) {}
 
-  async execute(email: string): Promise<string> {
+  async execute(email: string): Promise<string | object> {
     const __dirname = path.resolve(
       path.dirname(decodeURI(new URL(import.meta.url).pathname))
     );
@@ -71,6 +67,10 @@ export class SendForgotPasswordMailUseCase {
       templatePath
     );
 
-    return process.env.NODE_ENV == "test" ? token : url;
+    const responseTest = {
+      token,
+    };
+
+    return process.env.NODE_ENV == "test" ? responseTest : url;
   }
 }
