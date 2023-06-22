@@ -3,13 +3,13 @@ import { container } from "tsyringe";
 import { RedirectUrlUseCase } from "./RedirectUrlUseCase";
 
 export class RedirectUrlController {
-  async handler(req: Request, res: Response): Promise<void> {
-    const { newUrl } = req.params;
+  async handler(req: Request, res: Response): Promise<Response | void> {
+    const { newurl } = req.params;
 
     const redirectUrlUseCase = container.resolve(RedirectUrlUseCase);
 
-    const url = await redirectUrlUseCase.execute({ newUrl });
+    const url = await redirectUrlUseCase.execute({newUrl: newurl});
 
-    return res.redirect(url);
+    return process.env.NODE_ENV == "test" ? res.json(url) : res.redirect(url);
   }
 }

@@ -35,9 +35,7 @@ describe("Redirect URL", () => {
 
   it("Should not be able to redirect a URL if the new URL is not exists", async () => {
     expect(async () => {
-      await redirectUrlUseCase.execute({
-        newUrl: nanoid(5),
-      });
+      await redirectUrlUseCase.execute({ newUrl: nanoid(5) });
     }).rejects.toBeInstanceOf(AppError);
   });
 });

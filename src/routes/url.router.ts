@@ -10,7 +10,7 @@ const createNewUrlController = new CreateNewUrlController();
 const deleteNewUrlController = new DeleteNewUrlController();
 const redirectUrlController = new RedirectUrlController();
 
-urlRoutes.get("/:newurl", redirectUrlController.handler);
+urlRoutes.get("/newurl/:newurl", redirectUrlController.handler);
 
 urlRoutes.post("/newurl", ensureAuthenticated, createNewUrlController.handler);
 
