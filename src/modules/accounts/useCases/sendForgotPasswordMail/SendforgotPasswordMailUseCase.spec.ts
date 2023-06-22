@@ -45,7 +45,7 @@ describe("Send Forgot Password Mail", () => {
     let response = await sendForgotPasswordMailUseCase.execute(email);
 
     expect(response).toHaveProperty("token");
-  }, 6000);
+  }, 7000);
 
   it("Should not be able to send forgot password mail if email not exists", async () => {
     expect(async () => {

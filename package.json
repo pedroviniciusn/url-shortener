@@ -46,7 +46,8 @@
     "prisma": "^4.13.0",
     "reflect-metadata": "^0.1.13",
     "tsconfig-paths": "^4.2.0",
-    "tsyringe": "^4.7.0"
+    "tsyringe": "^4.7.0",
+    "yarn": "^1.22.19"
   },
   "repository": "git@github.com:pedroviniciusn/url-shortener.git"
 }
